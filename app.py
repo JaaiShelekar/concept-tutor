@@ -7,9 +7,14 @@ from modules.rag_engine import SyllabusRAG
 from modules.audio_generation import make_audio
 
 load_dotenv()
+
 try:
     if "GEMINI_API_KEY" in st.secrets:
         os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+
+    if "GEMINI_MODEL" in st.secrets:
+        os.environ["GEMINI_MODEL"] = st.secrets["GEMINI_MODEL"]
+
 except Exception:
     pass 
 st.set_page_config(page_title="Concept Tutor", page_icon="🎓", layout="wide")

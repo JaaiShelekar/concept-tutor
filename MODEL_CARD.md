@@ -10,7 +10,7 @@ Learning support, concept revision, syllabus question answering and exploration 
 
 | Model/service | Identifier | Role | Access mode |
 |---|---|---|---|
-| Google Gemini | Configured by `GEMINI_MODEL` (default in code: `gemini-2.5-flash`) | Concept explanations and chatbot | External API |
+| Google Gemini | Configured by `GEMINI_MODEL` (default in code: `gemini-3.8-flash`) | Concept explanations and chatbot | External API |
 | Sentence-BERT | `sentence-transformers/all-MiniLM-L6-v2` | PDF chunk embeddings and retrieval | Locally downloaded model |
 | BLIP | `Salesforce/blip-image-captioning-base` | Image captioning | Locally downloaded model |
 | BERT | `google-bert/bert-base-uncased` | Token attention visualization | Locally downloaded model |
