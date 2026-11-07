@@ -1,107 +1,127 @@
-# AI–ML–DL Concept Tutor
+# Concept Tutor 🎓
 
-An educational Streamlit application that explains Artificial Intelligence, Machine Learning and Deep Learning concepts at School, Undergraduate and Expert levels.
+An AI-powered learning platform designed to simplify complex Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL) concepts through interactive explanations and practical learning tools.
+
+**Live Application:** https://jaaishelekar-concept-tutor-app-vkifxz.streamlit.app/
+
+## Project Overview
+
+Concept Tutor is an interactive educational application that helps students understand AI, ML, and DL concepts in a simple and engaging way. It uses Google's Gemini API along with various AI-powered tools to provide explanations, compare prompts, analyze diagrams, visualize attention, and generate learning resources.
+
+The platform aims to make technical learning more accessible through interactive and multimodal features.
 
 ## Features
 
-- Gemini-powered concept explanations with zero-shot, few-shot and concise step-by-step prompting.
-- Temperature control and prompt comparison.
-- Conversational chatbot with bounded session history.
-- PDF syllabus question answering using Sentence-BERT retrieval and Gemini-generated grounded responses.
-- Optional BLIP diagram captioning.
-- Optional BERT attention heatmap.
-- Optional hosted diffusion image generation.
-- Text-to-speech audio summaries using gTTS.
-- Responsible-AI guidance and an evaluation template.
+- **AI Concept Tutor:** Explains complex AI, ML, and DL concepts using different prompting approaches.
+- **Prompt Comparison:** Compares outputs generated using different prompting techniques.
+- **AI Chatbot:** Provides an interactive conversational interface for asking questions and exploring concepts.
+- **Syllabus Notes – RAG:** Retrieves relevant information from available learning materials and generates context-based answers.
+- **Diagram Explainer:** Analyzes uploaded diagrams and explains their components using AI.
+- **Attention Visualizer:** Visualizes attention patterns to help understand how transformer-based models process text.
+- **AI Image Generator:** Generates images from text prompts.
+- **Audio Summary:** Converts learning explanations into audio for listening.
+- **Responsible AI & Evaluation:** Includes evaluation resources to assess responses and encourage responsible AI usage.
 
-## Syllabus mapping
+## Technologies Used
 
-| Unit | Implementation |
+| Category | Technologies |
 |---|---|
-| I – Foundations of Generative AI | Prompt techniques, temperature and prompt comparison |
-| II – GANs and LLMs | Gemini chatbot, conversation memory and separate BERT attention visualization |
-| III – GPT, BERT and Multimodal AI | PDF RAG and BLIP image captioning |
-| IV – Generative AI Tools and Techniques | Hosted image generation and gTTS audio |
-| V – Responsible AI | Evidence display, unsupported-question response, limitations and evaluation plan |
+| Programming Language | Python |
+| Frontend | Streamlit |
+| Generative AI | Google Gemini API |
+| RAG | LangChain / FAISS (as implemented) |
+| NLP & Embeddings | Sentence-BERT, BERT |
+| Image Processing | BLIP, PIL |
+| Image Generation | Hosted Diffusion Models |
+| Audio | gTTS |
+| Data Handling | NumPy, Pandas |
+| Environment Management | 	python-dotenv |
 
-## Requirements
+## Installation and Setup
 
-- Python 3.10 or newer
-- Gemini API key
-- Internet connection for Gemini and first-time model downloads
-- Optional: additional memory for Sentence-BERT, BLIP and BERT features
+### 1. Clone the Repository
 
-## Setup (Windows / VS Code)
+```bash
+git clone https://github.com/JaaiShelekar/concept-tutor.git
+cd concept-tutor
+```
 
-Open a terminal in the project folder:
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
-.venv\\Scripts\\activate
-python -m pip install --upgrade pip
+```
+
+Activate the environment:
+
+**Windows (PowerShell):**
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+```cmd
+.venv\Scripts\activate.bat
+```
+
+### 3. Install Dependencies 
+
+Install all project dependencies using the requirements file:
+
+```bash
 pip install -r requirements.txt
 ```
 
-Create a file named `.env` by copying `.env.example`. Put your Gemini API key in `.env`:
+### 4. Configure Environment Variables
 
-```text
-GEMINI_API_KEY=your_actual_key
-GEMINI_MODEL=gemini-2.5-flash
+Create a `.env` file in the project's root directory and add the following:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-3.8-flash
 ```
 
-Never share the `.env` file or commit it to a public repository.
+Replace `your_gemini_api_key` with your own Gemini API key.
 
-Run:
+**Note:** Never upload your `.env` file or expose your API key publicly.
+
+### 5. Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
-## Optional model features
-
-For PDF semantic retrieval, BLIP and attention visualization, install:
-
-```bash
-pip install -r requirements-optional.txt
-```
-
-The first use may download large model files. These optional features may be slow or unavailable on low-memory computers.
-
-For hosted image generation, configure `HUGGINGFACEHUB_API_TOKEN` and `HF_IMAGE_ENDPOINT` in `.env`. The endpoint must be supported by the inference provider and model you choose. Image generation is not required for the core tutor to start.
+The application will open in your default browser.
 
 ## Evaluation
 
-The required test matrix is in `evaluation/test_cases.json`. Use `evaluation/evaluation_template.csv` to record actual observations for ANN, CNN and GAN at all three levels. Evaluate correctness, clarity, technical depth, relevance, completeness and latency. Do not enter invented scores.
+The project includes evaluation resources to test and assess the generated responses.
 
-A suggested manual procedure:
-1. Run each of the nine concept/level combinations.
-2. Save the generated response.
-3. Review it against trusted course material.
-4. Rate each criterion using a documented scale (for example, 1–5).
-5. Record response time and note any incorrect or unsupported output.
-6. Test a question not covered by the uploaded notes and check whether the app expresses uncertainty.
+- `evaluation/test_cases.json` – Contains test cases for evaluating the application.
+- `evaluation/evaluation_template.csv` – Provides a template for recording evaluation results.
 
 ## Limitations
 
-- Gemini output may contain errors and should be checked against course material.
-- RAG retrieval quality depends on PDF text quality and chunking. Scanned PDFs are not OCR-processed.
-- Similarity scores help retrieve passages; they do not prove factual correctness.
-- BLIP may miss labels, arrows and detailed diagram relationships.
-- BERT attention weights are model-specific and are not a complete explanation of reasoning or Gemini internals.
-- Hosted image inference depends on provider access, endpoint configuration, model availability and quotas.
-- gTTS requires internet access.
+- Response quality depends on the underlying Gemini model and API availability.
+- AI-generated explanations may occasionally contain inaccurate information and should be verified.
+- Some features depend on external APIs or model availability.
+- Response time may vary depending on network connectivity and API demand.
 
-## Privacy and security
+## Privacy and Security
 
-- Keep API keys in `.env`; never hardcode them.
-- Do not upload confidential or personally identifying documents.
-- Uploaded PDF text is processed in the running app for retrieval; review the behavior of any external API before sending excerpts to it.
+- API keys are managed through environment variables and Streamlit secrets.
+- The `.env` file is excluded from version control.
+- Users should avoid uploading confidential or sensitive documents.
+- AI-generated responses should be reviewed before being used for academic or professional purposes.
 
-## Future enhancements
+## Future Enhancements
 
-- OCR for scanned PDFs.
-- Automated evaluation with a reviewed rubric.
-- Persistent user profiles and saved learning history.
-- Better diagram-layout understanding.
-- A configurable image-generation provider.
-- Deployment after local testing.
+- Support for additional AI models.
+- Improved response evaluation and accuracy.
+- More interactive visualizations for AI and ML concepts.
+- Expanded learning resources and personalized learning experiences.
+- Enhanced user experience and interface improvements.
+
+---
+
+**Developed as an AI/ML learning project using Python, Streamlit, and Generative AI technologies.**
