@@ -15,7 +15,7 @@ class GeminiTutor:
             )
 
         self.client = genai.Client(api_key=key)
-        self.model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        self.model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 
     def generate(
         self,
@@ -38,10 +38,7 @@ class GeminiTutor:
 
         response = self.client.models.generate_content(
             model=self.model,
-            contents=contents,
-            config=types.GenerateContentConfig(
-                temperature=float(temperature)
-            )
+            contents=contents
         )
 
         text = getattr(response, "text", None)
@@ -51,6 +48,7 @@ class GeminiTutor:
 
         return text, time.perf_counter() - start
 
+    
     def chat(self, history):
         start = time.perf_counter()
 
@@ -64,16 +62,13 @@ class GeminiTutor:
                     role=role,
                     parts=[
                         types.Part.from_text(text=item["content"])
-                    ]
+                    ]   
                 )
             )
 
         response = self.client.models.generate_content(
             model=self.model,
-            contents=contents,
-            config=types.GenerateContentConfig(
-                temperature=0.4
-            )
+            contents=contents
         )
 
         text = getattr(response, "text", None)

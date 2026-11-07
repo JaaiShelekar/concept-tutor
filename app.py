@@ -152,7 +152,7 @@ elif page == "AI Chatbot":
                         st.session_state.chat_history.append({"role":"assistant","content":answer})
                     except Exception as e:
                         st.error(str(e))
-        st.rerun()
+        # st.rerun()
 
 elif page == "Syllabus Notes – RAG":
     st.header("Syllabus Notes – Retrieval-Augmented Generation")
