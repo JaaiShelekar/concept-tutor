@@ -1,0 +1,38 @@
+[
+  {
+    "concept": "Artificial Neural Networks",
+    "level": "School"
+  },
+  {
+    "concept": "Artificial Neural Networks",
+    "level": "Undergraduate"
+  },
+  {
+    "concept": "Artificial Neural Networks",
+    "level": "Expert"
+  },
+  {
+    "concept": "Convolutional Neural Networks",
+    "level": "School"
+  },
+  {
+    "concept": "Convolutional Neural Networks",
+    "level": "Undergraduate"
+  },
+  {
+    "concept": "Convolutional Neural Networks",
+    "level": "Expert"
+  },
+  {
+    "concept": "Generative Adversarial Networks",
+    "level": "School"
+  },
+  {
+    "concept": "Generative Adversarial Networks",
+    "level": "Undergraduate"
+  },
+  {
+    "concept": "Generative Adversarial Networks",
+    "level": "Expert"
+  }
+]
